@@ -1,49 +1,80 @@
-import { Bug } from '../../assets/Icons/Bug'
-import { Dark } from '../../assets/Icons/Dark'
-import { Dragon } from '../../assets/Icons/Dragon'
-import { Electric } from '../../assets/Icons/Electric'
-import { Fairy } from '../../assets/Icons/Fairy'
-import { Fighting } from '../../assets/Icons/Fighting'
-import { Fire } from '../../assets/Icons/Fire'
-import { Flying } from '../../assets/Icons/Flying'
-import { Ghost } from '../../assets/Icons/Ghost'
-import { Grass } from '../../assets/Icons/Grass'
-import { Ground } from '../../assets/Icons/Ground'
-import { Ice } from '../../assets/Icons/Ice'
-import { Normal } from '../../assets/Icons/Normal'
-import { Poison } from '../../assets/Icons/Poison'
-import { Pokeball } from '../../assets/Icons/Pokeball'
-import { Psychic } from '../../assets/Icons/Psychic'
-import { Rock } from '../../assets/Icons/Rock'
-import { Steel } from '../../assets/Icons/Steel'
-import { Water } from '../../assets/Icons/Water'
+import { useEffect, useState } from 'react'
 import './CardContainer.css'
- 
+import { MainClient, PokemonClient } from 'pokenode-ts'
+import fs from 'fs'
+
+//console.log(P)
+
+// https://blog.curso-r.com/posts/2021-11-29-api-pokemon/#:~:text=O%20primeiro%20passo%20para%20acessar%20qualquer%20API%20é%20procurar%20uma%20documentação.&text=Isso%20significa%20que%20devemos%20fazer,(que%20chamamos%20de%20endpoint).
+// https://github.com/PokeAPI/pokeapi/issues/346
+// https://github.com/PokeAPI/sprites
+// https://github.com/PokeAPI/pokedex-promise-v2
+
+import axios from 'axios'
+
 export const CardContainer = () => {
+   const [arrayPokemons, setArrayPokemons]: any[] = useState([])
+   const [arrayPokemonsSVG, setArrayPokemonsSVG]: any[] = useState([])
+   const pokedex = new PokemonClient()
+   
+   useEffect(() => {
+      getPokemonsList()
+   }, [])
+
+   const getPokemonsList = async() => { 
+      await pokedex.listPokemons()
+      .then(res => {
+         setArrayPokemons(res.results)
+         console.log(res)
+        pokedex.listCharacteristics()
+         .then(res => console.log(res))
+         .catch(e => console.log(e))
+      })
+      .catch(e => console.log(e))
+   } 
+
+   const pokemonByName = async(name: string) => {
+      await pokedex.getPokemonByName(`${name}`)
+         .then(res => console.log(res))
+         // .then(res => res.json())
+         .then(async(res) => {
+            await fs.writeFile('../../datas/aa.json', res, (err) => {
+               if(err) {
+                  console.log('err')
+               } else {
+                  console.log('ok')
+               }
+            })
+         })
+         .catch(e => console.log(e))
+   }
+
+
+   // res.data.sprites.other.dream_world.front_default
+
+   {/* { setArrayPokemonsSVG.map((svg: any) => {
+                           <img src={svg} alt={el.name} />
+                        }) } */}
+                        // { 
+                        //    await axios.get(`${ el.url }`)
+                        //       .then(res => setArrayPokemonsSVG(res.data.sprites.other.dream_world.front_default))
+                        //       .catch(e => console.log(e))
+                        // }
+
    return (
       <>
-         <section className="cardContainer font-bold flex flex-wrap text-pokemon">
-            CardContainer
-            <Bug w='40' h='40' />
-            <Dark w='40' h='40' />
-            <Dragon w='40' h='40' />
-            <Electric w='40' h='40' />
-            <Fairy w='40' h='40' />
-            <Fighting w='40' h='40' />
-            <Fire w='40' h='40' />
-            <Flying w='40' h='40' />
-            <Ghost w='40' h='40' />
-            <Grass w='40' h='40' />
-            <Ground w='40' h='40' />
-            <Ice w='40' h='40' />
-            <Normal w='40' h='40' />
-            <Poison w='40' h='40' />
-            <Pokeball w='40' h='40' />
-            <Psychic w='40' h='40' />
-            <Rock w='40' h='40' />
-            <Steel w='40' h='40' />
-            <Water w='40' h='40' />
-            
+         <section className="cardContainer font-bold flex flex-wrap text-pokemon overflow-y-auto">
+            <ul>    
+               { arrayPokemons.map((el:any) => 
+                 <li key={ el.name }>
+                  <>
+                     <p>{ el.name }</p>
+                     <p>{ el.url }</p>
+                     <br />
+                  </>
+                  </li>
+               ) }
+            </ul>
          </section>
       </>
    )
