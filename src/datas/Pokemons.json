@@ -1,211 +1,22 @@
 {
    "pokemons": [
       {
-         "name": "Bulbasaur",
-         "svg": "https://pokeapi.co/api/v2/pokemon/1/"
-      }, 
-      
-   
-      {
-         "name": "Ivysaur",
-         "svg": "https://pokeapi.co/api/v2/pokemon/2/"
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-      
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-      
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-      
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-      
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-      
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-      
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-
-      {
-         "name": "",
-         "svg": ""
-      }, 
-      
-      {
-         "name": "",
-         "svg": ""
-      }, 
+         "name": "absol",
+         "id": 359,
+         "type": [
+            {
+               "slot": 1,
+               "type": {
+                  "name": "dark",
+                  "url": "https://pokeapi.co/api/v2/type/17/"
+               }
+            }
+         ],
+         "height": 12,
+         "weight": 470,
+         "base_experience": 163,
+         
+         "imgs": "../imgs/359.svg"
+      }
    ]
 }
-
-
-
-
-
-
-venusaur
-https://pokeapi.co/api/v2/pokemon/3/
-
-charmander
-https://pokeapi.co/api/v2/pokemon/4/
-
-charmeleon
-https://pokeapi.co/api/v2/pokemon/5/
-
-charizard
-https://pokeapi.co/api/v2/pokemon/6/
-
-squirtle
-https://pokeapi.co/api/v2/pokemon/7/
-
-wartortle
-https://pokeapi.co/api/v2/pokemon/8/
-
-blastoise
-
-https://pokeapi.co/api/v2/pokemon/9/
-
-
-caterpie
-
-https://pokeapi.co/api/v2/pokemon/10/
-
-
-metapod
-
-https://pokeapi.co/api/v2/pokemon/11/
-
-
-butterfree
-
-https://pokeapi.co/api/v2/pokemon/12/
-
-
-weedle
-
-https://pokeapi.co/api/v2/pokemon/13/
-
-
-kakuna
-
-https://pokeapi.co/api/v2/pokemon/14/
-
-
-beedrill
-
-https://pokeapi.co/api/v2/pokemon/15/
-
-
-pidgey
-
-https://pokeapi.co/api/v2/pokemon/16/
-
-
-pidgeotto
-
-https://pokeapi.co/api/v2/pokemon/17/
-
-
-pidgeot
-
-https://pokeapi.co/api/v2/pokemon/18/
-
-
-rattata
-
-https://pokeapi.co/api/v2/pokemon/19/
-
-
-raticate
-
-https://pokeapi.co/api/v2/pokemon/20/

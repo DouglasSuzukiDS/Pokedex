@@ -1,0 +1,62 @@
+import absolAPI from '../../datas/absol.json'
+import arbokAPI from '../../datas/arbok.json'
+import arceusAPI from '../../datas/arceus.json'
+import articunoAPI from '../../datas/articuno.json'
+import azurillAPI from '../../datas/azurill.json'
+import banetteAPI from '../../datas/banette.json'
+import blastoiseAPI from '../../datas/blastoise.json'
+import bulbasaurAPI from '../../datas/bulbasaur.json'
+import butterfreeAPI from '../../datas/butterfree.json'
+import charizardAPI from '../../datas/charizard.json'
+import charmanderAPI from '../../datas/charmander.json'
+import charmeleonAPI from '../../datas/charmeleon.json'
+import dialgaAPI from '../../datas/dialga.json'
+import dragoniteAPI from '../../datas/dragonite.json'
+import enteiAPI from '../../datas/entei.json'
+import froslassAPI from '../../datas/froslass.json'
+import gengarAPI from '../../datas/gengar.json'
+import hoohAPI from '../../datas/ho-oh.json'
+import hydreigonAPI from '../../datas/hydreigon.json'
+import ivysaurAPI from '../../datas/ivysaur.json'
+import jigglypuffAPI from '../../datas/jigglypuff.json'
+import kyuremAPI from '../../datas/kyurem.json'
+import laironAPI from '../../datas/lairon.json'
+import lucarioAPI from '../../datas/lucario.json'
+import lugiaAPI from '../../datas/lugia.json'
+import machampAPI from '../../datas/machamp.json'
+import mewAPI from '../../datas/mew.json'
+import mewtwoAPI from '../../datas/mewtwo.json'
+import onixAPI from '../../datas/onix.json'
+import pachirisuAPI from '../../datas/pachirisu.json'
+import pichuAPI from '../../datas/pichu.json'
+import pikachuAPI from '../../datas/pikachu.json'
+import raichuAPI from '../../datas/raichu.json'
+import rayquazaAPI from '../../datas/rayquaza.json'
+import rioluAPI from '../../datas/riolu.json'
+import silvallyAPI from '../../datas/silvally.json'
+import squirtleAPI from '../../datas/squirtle.json'
+import suicuneAPI from '../../datas/suicune.json'
+import terrakionAPI from '../../datas/terrakion.json'
+import togeticAPI from '../../datas/togetic.json'
+import totodileAPI from '../../datas/totodile.json'
+import venusaurAPI from '../../datas/venusaur.json'
+import wartortleAPI from '../../datas/wartortle.json'
+import weezingAPI from '../../datas/weezing.json'
+import zamazentaAPI from '../../datas/zamazenta.json'
+import zapdosAPI from '../../datas/zapdos.json'
+
+const toDownloadSVG01 = [ absolAPI, arbokAPI, arceusAPI, articunoAPI, azurillAPI, banetteAPI, blastoiseAPI, bulbasaurAPI, butterfreeAPI, charizardAPI ]
+
+const toDownloadSVG02 = [ charmanderAPI, charmeleonAPI, dialgaAPI, dragoniteAPI, enteiAPI, froslassAPI, gengarAPI, hoohAPI, hydreigonAPI, ivysaurAPI ]
+
+const toDownloadSVG03 = [ jigglypuffAPI, kyuremAPI, laironAPI, lucarioAPI, lugiaAPI, machampAPI, mewAPI, mewtwoAPI, onixAPI, pachirisuAPI ]
+
+const toDownloadSVG04 = [ pichuAPI, pikachuAPI, raichuAPI, rayquazaAPI, rioluAPI, silvallyAPI, squirtleAPI, suicuneAPI, terrakionAPI, togeticAPI ]
+//silvally
+
+const toDownloadSVG05 = [ totodileAPI, venusaurAPI, wartortleAPI, weezingAPI, zamazentaAPI, zapdosAPI ]
+// zamazenta
+
+//console.log(P)
+
+const test = [ silvallyAPI, zamazentaAPI ]
