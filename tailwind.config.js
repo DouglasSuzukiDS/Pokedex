@@ -16,6 +16,7 @@ export default {
         'BluePokemon': '#3E5DB3',
         'DarkBluePokemon': '#273D78',
         'YellowPokemon': '#FAC705',
+        'AquaPokemon': '#73CEC0',
 
         'Bug': '#91C12F',
         'Dark': '#D0C7DF',

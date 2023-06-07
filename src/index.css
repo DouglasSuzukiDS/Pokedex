@@ -28,9 +28,17 @@
 
    --InsidePokeballGradient: linear-gradient(180deg, #BFD9E7 0%, #7C9DB9 47.92%, #5C6579 100%);
 
+   --RBW01Gradient: linear-gradient(128.85deg, #FF1C1C 3.25%, #000000 47.53%, #FFFFFF 100%);
+   --RBW02Gradient: linear-gradient(180deg, #FF1C1C 0%, #000000 50%, #FFFFFF 100%); /* Top to Bottom */
+
+   --Blue01Gradient: linear-gradient(180deg, #273D78 0%, #5C6579 50%, #3E5DB3 100%); /* Top tpo Bottom */
+   --Blue02Gradient: linear-gradient(150.94deg, #273D78 1.11%, #5C6579 50.04%, #3E5DB3 100%); 
+
+
    --BluePokemon: #3E5DB3;
    --DarkBluePokemon: #273D78;
    --YellowPokemon: #FAC705;
+   --AquaPokemon: #73CEC0;
 
    --Bug: #91C12F;
    --Dark: #D0C7DF;
@@ -39,9 +47,6 @@
    --Fairy: #EC8FE6;
    --Fighting: #CE416B;
    --Fire: #FF9D55;
-   --Flying: #89AAE3;
-   --Ghost: #5269AD;
-   --Grass: #63BC5A;
    --Ground: #D97845;
    --Ice: #73CEC0;
    --Normal: #919AA2;
