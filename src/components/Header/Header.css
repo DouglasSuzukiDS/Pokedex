@@ -1,5 +1,39 @@
 header {
    width: 100%;
-   height: 100px;
+   height: 100vh;
    border: 1px solid red;
+   /* z-index: 10; */
+}
+
+.redHeader {
+   height: 100%;
+}
+
+.blackHeader {
+   height: 120px;
+   position: relative;
+}
+
+.circleBlackHeader {
+   width: 480px;
+   height: 480px;
+   border-radius: 50%;
+}
+
+.circleWhiteHeader {
+   width: 240px;
+   height: 240px;
+   border-radius: 50%;
+}
+
+.whiteHeader {
+   height: 100%;
+}
+
+.header {
+   width: 100%;
+}
+
+.pokedex {
+   font-size: 40px;
 }

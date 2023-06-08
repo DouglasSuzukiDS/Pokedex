@@ -1,0 +1,307 @@
+[
+    {
+        "id": "521df1401aeac40e",
+        "type": "tab",
+        "label": "Pokedex",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b3104962e9fdf821",
+        "type": "debug",
+        "z": "521df1401aeac40e",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e6a47c525587e0d7",
+        "type": "function",
+        "z": "521df1401aeac40e",
+        "name": "Users",
+        "func": "let query = `SELECT * FROM users`\n\nmsg.topic = query\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 80,
+        "wires": [
+            [
+                "3c354380c4bc8980"
+            ]
+        ]
+    },
+    {
+        "id": "3c354380c4bc8980",
+        "type": "mysql",
+        "z": "521df1401aeac40e",
+        "mydb": "2d3e8f48bcc11790",
+        "name": "",
+        "x": 460,
+        "y": 80,
+        "wires": [
+            [
+                "29468666afdffaaa",
+                "b3104962e9fdf821"
+            ]
+        ]
+    },
+    {
+        "id": "4e3880d9d5d45bbe",
+        "type": "http in",
+        "z": "521df1401aeac40e",
+        "name": "",
+        "url": "/users",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 80,
+        "wires": [
+            [
+                "e6a47c525587e0d7"
+            ]
+        ]
+    },
+    {
+        "id": "29468666afdffaaa",
+        "type": "http response",
+        "z": "521df1401aeac40e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 630,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "0ad9544f93614e9d",
+        "type": "debug",
+        "z": "521df1401aeac40e",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "2f8e04a6d780f0bb",
+        "type": "function",
+        "z": "521df1401aeac40e",
+        "name": "Register",
+        "func": "const userName = msg.payload.userName\nconst userLogin = msg.payload.userLogin\nconst userPassword = msg.payload.userPassword\nconst userPokemonFavoriteType = msg.payload.userPokemonFavoriteType\nconst userCategory = msg.payload.userCategory\n\nlet query = `INSERT INTO users (userName, userLogin, userPassword, userPokemonFavoriteType, userCategory) VALUES ('${userName}', '${userLogin}', '${userPassword}', '${userPokemonFavoriteType}', '${userCategory}')`\n\nmsg.topic = query\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 280,
+        "wires": [
+            [
+                "5e67be4ea68a007c"
+            ]
+        ]
+    },
+    {
+        "id": "5e67be4ea68a007c",
+        "type": "mysql",
+        "z": "521df1401aeac40e",
+        "mydb": "2d3e8f48bcc11790",
+        "name": "",
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "a6bff3fd4bf87719",
+                "0ad9544f93614e9d"
+            ]
+        ]
+    },
+    {
+        "id": "c5f3b72e295f9c4b",
+        "type": "http in",
+        "z": "521df1401aeac40e",
+        "name": "",
+        "url": "/register",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "2f8e04a6d780f0bb"
+            ]
+        ]
+    },
+    {
+        "id": "a6bff3fd4bf87719",
+        "type": "http response",
+        "z": "521df1401aeac40e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 630,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "2513acf24037b6fe",
+        "type": "inject",
+        "z": "521df1401aeac40e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "userName",
+                "v": "Nick",
+                "vt": "str"
+            },
+            {
+                "p": "userLogin",
+                "v": "nick.szk",
+                "vt": "str"
+            },
+            {
+                "p": "userPassword",
+                "v": "Leader",
+                "vt": "str"
+            },
+            {
+                "p": "userPokemonFavoriteType",
+                "v": "Dragon",
+                "vt": "str"
+            },
+            {
+                "p": "userCategory",
+                "v": "Leader",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 340,
+        "wires": [
+            [
+                "2f8e04a6d780f0bb"
+            ]
+        ]
+    },
+    {
+        "id": "346ca1361bd37dc7",
+        "type": "debug",
+        "z": "521df1401aeac40e",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "d262f5eaa533ab63",
+        "type": "function",
+        "z": "521df1401aeac40e",
+        "name": "Login",
+        "func": "const userLogin = msg.payload.userLogin\nconst userPassword = msg.payload.userPassword\n\nlet query = `SELECT * FROM users WHERE userLogin = '${userLogin}' AND userPassword = '${userPassword}'`\n\nmsg.topic = query\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "556dcc1d29827cfd"
+            ]
+        ]
+    },
+    {
+        "id": "556dcc1d29827cfd",
+        "type": "mysql",
+        "z": "521df1401aeac40e",
+        "mydb": "2d3e8f48bcc11790",
+        "name": "",
+        "x": 460,
+        "y": 180,
+        "wires": [
+            [
+                "ab68c8f8042d81de",
+                "346ca1361bd37dc7"
+            ]
+        ]
+    },
+    {
+        "id": "f6b406e353f3f280",
+        "type": "http in",
+        "z": "521df1401aeac40e",
+        "name": "",
+        "url": "/login",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "d262f5eaa533ab63"
+            ]
+        ]
+    },
+    {
+        "id": "ab68c8f8042d81de",
+        "type": "http response",
+        "z": "521df1401aeac40e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 630,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2d3e8f48bcc11790",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "pokedex",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]

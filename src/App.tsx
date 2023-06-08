@@ -1,19 +1,18 @@
-import { useState } from 'react'
 import './App.css'
-import { Header } from './components/Header/Header'
 import { CardContainer } from './components/CardContainer/CardContainer'
 import { Footer } from './components/Footer/Footer'
+import { Header } from './components/Header/Header'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
+    
     <>
-      <main className='flex flex-col justify-between items-center'>
-        <Header />
+     <main className='flex flex-col justify-between items-center border'>
+        {/* <Header /> */}
         <CardContainer />
-        <Footer />
-      </main>
+        
+     </main>
     </>
   )
 }

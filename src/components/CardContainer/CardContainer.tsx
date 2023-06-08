@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { ComponentProps, useEffect, useState } from 'react'
 import './CardContainer.css'
 import { PokemonClient } from 'pokenode-ts'
 
@@ -11,23 +11,36 @@ const PokemonAPI = new PokemonClient()
 // https://pokenode-ts.vercel.app
 // https://pokemon.fandom.com/wiki/Poison_type
 // https://horadecodar.com.br/como-salvar-a-saida-do-console-log-em-arquivo/
-import Pokemons from '../../datas/Pokemons.json'
+
 import axios from 'axios'
-import imgTest from '../../assets/SVGs/359.svg'
-import inIMGS from '../../imgs/359.svg'
+
+import { Info } from '../Info/Info'
+import { ComponentsTypes } from '../../types/ComponentsType'
 
 
-export const CardContainer = () => {
+export const CardContainer = ({ className }: ComponentsTypes ) => {
+   const [pokemonsAPI, setPokemonsAPI]: any[] = useState([])
    const [arrayPokemons, setArrayPokemons]: any[] = useState([])
-   const [arrayPokemonsSVG, setArrayPokemonsSVG]: any[] = useState([])
+
    const pokedex = new PokemonClient()
    
    useEffect(() => {
+      getPokemonsAPI() // API Local
       // getPokemonsList()
       // downloadPokemonSVG(pichuAPI)
       // downloadPokemonInfos('pichu')
       findPokemonById(639)
-   })
+   }, [])
+
+  const getPokemonsAPI = async() => {
+    await axios.get('../src/API/Pokemons.json')
+      .then(res => {
+        //console.log(res.data.pokemon)
+        setPokemonsAPI(res.data.pokemon)
+      })
+      .catch(err => console.log(err))
+
+  }
 
    const getPokemonsList = async() => { 
       await pokedex.listPokemons()
@@ -109,30 +122,18 @@ export const CardContainer = () => {
          .catch(e => console.log(e))
    }
 
-   const pokImg = Pokemons.pokemons[0].imgs
-  
-   console.log(inIMGS)
-   console.log(Pokemons.pokemons[0].imgs)
-   console.log(pokImg)
-
    return (
       <>
          <section className="cardContainer font-bold flex flex-wrap text-pokemon overflow-y-auto">
-            <img src={inIMGS} alt="Via Import" />
-            {/* <img src={Pokemons.pokemons[0].imgs} alt="Via Json" />
-            <img src={pokImg} alt="Via Const" /> */}
-               
-            <ul>    
-               { arrayPokemons.map((el:any) => 
-                 <li key={ el.name }>
-                  <>
-                     <p>{ el.name }</p>
-                     <p>{ el.url }</p>
-                     <br />
-                  </>
-                  </li>
-               ) }
-            </ul>
+      
+            {
+            //console.log(pokemonsAPI)
+            pokemonsAPI.map((pkm: any) => (
+               <img key={ pkm.id } src={ pkm.image } alt={ pkm.name }  />
+            ))
+            }
+
+            
          </section>
       </>
    )

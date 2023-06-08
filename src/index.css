@@ -3,72 +3,72 @@
 @tailwind utilities;
 
 @font-face {
-   font-family: 'Pokemon Hollow';
-   src: url('./assets/Font/Pokemon-Hollow.ttf');
+  font-family: 'Pokemon Hollow';
+  src: url('./assets/Font/Pokemon-Hollow.ttf');
 }
 
 @font-face {
-   font-family: 'Pokemon Solid';
-   src: url('./assets/Font/Pokemon-Solid.ttf');
+  font-family: 'Pokemon Solid';
+  src: url('./assets/Font/Pokemon-Solid.ttf');
 }
 
 :root {
-   --RedPokeball: #FF1C1C;
-   --BlackPokeball: #000;
-   --WhitePokeball: #FFF;
+  --RedPokeball: #FF1C1C;
+  --BlackPokeball: #000;
+  --WhitePokeball: #FFF;
 
-   --Border-Shadow: 4px solid #273D78;
-   /* Shadow Pokemon */
+  --Border-Shadow: 4px solid #273D78;
+  /* Shadow Pokemon */
 
-   --Text-Shadow: 0px 4px 4px #273D78;
+  --Text-Shadow: 0px 4px 4px #273D78;
 
-   --InsidePokeball01: #5C6579;
-   --InsidePokeball02: #7C9DB9;
-   --InsidePokeball03: #BFD9E7;
+  --InsidePokeball01: #5C6579;
+  --InsidePokeball02: #7C9DB9;
+  --InsidePokeball03: #BFD9E7;
 
-   --InsidePokeballGradient: linear-gradient(180deg, #BFD9E7 0%, #7C9DB9 47.92%, #5C6579 100%);
+  --InsidePokeballGradient: linear-gradient(180deg, #BFD9E7 0%, #7C9DB9 47.92%, #5C6579 100%);
 
-   --RBW01Gradient: linear-gradient(128.85deg, #FF1C1C 3.25%, #000000 47.53%, #FFFFFF 100%);
-   --RBW02Gradient: linear-gradient(180deg, #FF1C1C 0%, #000000 50%, #FFFFFF 100%); /* Top to Bottom */
+  --RBW01Gradient: linear-gradient(128.85deg, #FF1C1C 3.25%, #000000 47.53%, #FFFFFF 100%);
+  --RBW02Gradient: linear-gradient(180deg, #FF1C1C 0%, #000000 50%, #FFFFFF 100%); /* Top to Bottom */
 
-   --Blue01Gradient: linear-gradient(180deg, #273D78 0%, #5C6579 50%, #3E5DB3 100%); /* Top tpo Bottom */
-   --Blue02Gradient: linear-gradient(150.94deg, #273D78 1.11%, #5C6579 50.04%, #3E5DB3 100%); 
+  --Blue01Gradient: linear-gradient(180deg, #273D78 0%, #5C6579 50%, #3E5DB3 100%); /* Top tpo Bottom */
+  --Blue02Gradient: linear-gradient(150.94deg, #273D78 1.11%, #5C6579 50.04%, #3E5DB3 100%); 
 
 
-   --BluePokemon: #3E5DB3;
-   --DarkBluePokemon: #273D78;
-   --YellowPokemon: #FAC705;
-   --AquaPokemon: #73CEC0;
+  --BluePokemon: #3E5DB3;
+  --DarkBluePokemon: #273D78;
+  --YellowPokemon: #FAC705;
+  --AquaPokemon: #73CEC0;
 
-   --Bug: #91C12F;
-   --Dark: #D0C7DF;
-   --Dragon: #0B6DC3;
-   --Electric: #F4D23C;
-   --Fairy: #EC8FE6;
-   --Fighting: #CE416B;
-   --Fire: #FF9D55;
-   --Ground: #D97845;
-   --Ice: #73CEC0;
-   --Normal: #919AA2;
-   --Poison: #B567CE;
-   --Psychic: #FA7179;
-   --Rock: #C5B78C;
-   --Steel: #5A8EA2;
-   --Water: #5090D6;
+  --Bug: #91C12F;
+  --Dark: #D0C7DF;
+  --Dragon: #0B6DC3;
+  --Electric: #F4D23C;
+  --Fairy: #EC8FE6;
+  --Fighting: #CE416B;
+  --Fire: #FF9D55;
+  --Ground: #D97845;
+  --Ice: #73CEC0;
+  --Normal: #919AA2;
+  --Poison: #B567CE;
+  --Psychic: #FA7179;
+  --Rock: #C5B78C;
+  --Steel: #5A8EA2;
+  --Water: #5090D6;
 
-   --Text-Pokemon: 'Pokemon Solid'
+  --Text-Pokemon: 'Pokemon Solid'
 }
 
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .text-pokemon {
-   font-family: var(--Text-Pokemon);
-   color: var(--YellowPokemon);
-   letter-spacing: 0.11rem;
-   box-shadow: var(--Border-Shadow);
-   text-shadow: var(--Text-Shadow);
+  font-family: var(--Text-Pokemon);
+  color: var(--YellowPokemon);
+  letter-spacing: 0.11rem;
+  box-shadow: var(--Border-Shadow);
+  text-shadow: var(--Text-Shadow);
 }

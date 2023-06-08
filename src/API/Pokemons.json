@@ -1,0 +1,22 @@
+{
+   "pokemon": [
+      {
+         "name": "absol",
+         "id": 359,
+         "type": [
+            {
+               "slot": 1,
+               "type": {
+                  "name": "dark",
+                  "url": "https://pokeapi.co/api/v2/type/17/"
+               }
+            }
+         ],
+         "height": 12,
+         "weight": 470,
+         "base_experience": 163,
+         
+         "image": "../SVGs/359.svg"
+      }
+   ]
+}
