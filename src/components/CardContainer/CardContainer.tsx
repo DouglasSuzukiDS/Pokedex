@@ -1,9 +1,10 @@
-import { ComponentProps, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './CardContainer.css'
 import { PokemonClient } from 'pokenode-ts'
+import axios from 'axios'
+import { ComponentsTypes } from '../../types/ComponentsType'
 
 const PokemonAPI = new PokemonClient()
-
 // https://blog.curso-r.com/posts/2021-11-29-api-pokemon/#:~:text=O%20primeiro%20passo%20para%20acessar%20qualquer%20API%20é%20procurar%20uma%20documentação.&text=Isso%20significa%20que%20devemos%20fazer,(que%20chamamos%20de%20endpoint).
 // https://github.com/PokeAPI/pokeapi/issues/346
 // https://github.com/PokeAPI/sprites
@@ -12,34 +13,31 @@ const PokemonAPI = new PokemonClient()
 // https://pokemon.fandom.com/wiki/Poison_type
 // https://horadecodar.com.br/como-salvar-a-saida-do-console-log-em-arquivo/
 
-import axios from 'axios'
-
-import { Info } from '../Info/Info'
-import { ComponentsTypes } from '../../types/ComponentsType'
-
+import testImg from '../../assets/SVGs/359.svg'
+import PokemonsLocal from '../../API/Pokemons.json'
 
 export const CardContainer = ({ className }: ComponentsTypes ) => {
    const [pokemonsAPI, setPokemonsAPI]: any[] = useState([])
    const [arrayPokemons, setArrayPokemons]: any[] = useState([])
 
    const pokedex = new PokemonClient()
+
    
    useEffect(() => {
       getPokemonsAPI() // API Local
       // getPokemonsList()
       // downloadPokemonSVG(pichuAPI)
       // downloadPokemonInfos('pichu')
-      findPokemonById(639)
+      // findPokemonById(639)
    }, [])
 
   const getPokemonsAPI = async() => {
     await axios.get('../src/API/Pokemons.json')
       .then(res => {
-        //console.log(res.data.pokemon)
+        console.log(res.data.pokemon)
         setPokemonsAPI(res.data.pokemon)
       })
-      .catch(err => console.log(err))
-
+      .catch(err => console.log(`Err import: ${err}`))
   }
 
    const getPokemonsList = async() => { 
@@ -125,12 +123,15 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
    return (
       <>
          <section className="cardContainer font-bold flex flex-wrap text-pokemon overflow-y-auto">
+
+            <img src={ testImg } alt="Test"  />
       
             {
-            //console.log(pokemonsAPI)
-            pokemonsAPI.map((pkm: any) => (
-               <img key={ pkm.id } src={ pkm.image } alt={ pkm.name }  />
-            ))
+               //console.log(pokemonsAPI)
+               pokemonsAPI.map((pkm: any) => (
+                  // <img key={ pkm.id } src={ pkm.image } alt={ pkm.name }  />
+                  <h1 key={ pkm.id }>{ pkm.name }</h1>
+               ))
             }
 
             

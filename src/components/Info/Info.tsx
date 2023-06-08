@@ -1,4 +1,3 @@
-
 import { ComponentsTypes } from '../../types/ComponentsType'
 import './Info.css'
 
