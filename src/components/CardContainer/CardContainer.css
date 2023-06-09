@@ -3,3 +3,49 @@
    height: 100%;
    border: 1px solid green;
 }
+
+.card-Blue01Gradient {
+   border: 1px solid transparent;
+   border-image: var(--Blue01Gradient);
+   border-image-slice: 1;
+}
+
+.card-Blue02Gradient {
+   border: 1px solid transparent;
+   border-image: var(--Blue01Gradient);
+   border-image-slice: 1;
+}
+
+.card-RBW01Gradient {
+   border: 1px solid transparent;
+   border-image: var(--RBW01Gradient);
+   border-image-slice: 1;
+}
+
+.card-RBW02Gradient {
+   border: 1px solid transparent;
+   border-image: var(--RBW02Gradient);
+   border-image-slice: 1;
+}
+
+.card {
+   width: 150px;
+   height: 201px;
+}
+
+.card-photo {
+   width: 81px;
+}
+
+.card-photo img {
+   width: 65px;
+   height: 65px;
+}
+.card-name p:nth-child(1) {
+   border: 1px solid red;
+}
+
+.card-name p:nth-child(2) {
+   font-size: 12px;
+   border: 1px solid red;
+}

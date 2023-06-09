@@ -71,4 +71,5 @@
   letter-spacing: 0.11rem;
   box-shadow: var(--Border-Shadow);
   text-shadow: var(--Text-Shadow);
+  font-size: 16px;
 }

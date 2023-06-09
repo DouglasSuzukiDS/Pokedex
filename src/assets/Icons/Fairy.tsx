@@ -1,4 +1,4 @@
-import { IconsProps } from "../../types/IconsProps"
+import { IconsProps } from "../../types/IconsType"
 
 export const Fairy = ({ w, h, className, fill, onClick }: IconsProps) => {
   return (
