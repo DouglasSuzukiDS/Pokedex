@@ -4,48 +4,96 @@
    border: 1px solid green;
 }
 
-.card-Blue01Gradient {
-   border: 1px solid transparent;
-   border-image: var(--Blue01Gradient);
-   border-image-slice: 1;
+.card-Blue01Gradient, .card-Blue02Gradient, .card-RBW01Gradient, .card-RBW02Gradient {
+   position: relative;
 }
 
-.card-Blue02Gradient {
-   border: 1px solid transparent;
-   border-image: var(--Blue01Gradient);
-   border-image-slice: 1;
+.card-Blue01Gradient::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 8px;
+   padding: 2px;
+   background: var(--Blue01Gradient);
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
 }
 
-.card-RBW01Gradient {
-   border: 1px solid transparent;
-   border-image: var(--RBW01Gradient);
-   border-image-slice: 1;
+.card-Blue02Gradient::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 8px;
+   padding: 2px;
+   background: var(--Blue02Gradient);
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
 }
 
-.card-RBW02Gradient {
-   border: 1px solid transparent;
-   border-image: var(--RBW02Gradient);
-   border-image-slice: 1;
+.card-RBW01Gradient::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 8px;
+   padding: 2px;
+   background: var(--RBW01Gradient);
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
+}
+
+.card-RBW02Gradient::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 8px;
+   padding: 2px;
+   background: var(--RBW02Gradient);
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
 }
 
 .card {
    width: 150px;
-   height: 201px;
+   height: 206px;
+   font-family: 'Roboto';
+   cursor: pointer;
+   transition: all .75s;
 }
 
+/* .card:hover {
+   background: var(--Blue02Gradient);
+} */
+
 .card-photo {
-   width: 81px;
+   /* width: 81px; */
 }
 
 .card-photo img {
    width: 65px;
    height: 65px;
 }
-.card-name p:nth-child(1) {
-   border: 1px solid red;
+
+.card-infos {
+   height: auto;
 }
 
 .card-name p:nth-child(2) {
-   font-size: 12px;
-   border: 1px solid red;
+   font-size: 14px;
+}
+
+.cart-pokemon-type {
+   width: 24px;
+   height: 24px;
 }

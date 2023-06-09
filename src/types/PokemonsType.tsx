@@ -6,6 +6,7 @@ export type PokemonType= {
       type: {
          name: string;
          url: string;
+         svg: string
       }
    }[]
    height: number

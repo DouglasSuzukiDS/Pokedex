@@ -36,7 +36,7 @@ export default {
         'Rock': '#C5B78C',
         'Steel': '#5A8EA2',
         'Water': '#5090D6',
-      }
+      },
     },
   },
   plugins: [],
