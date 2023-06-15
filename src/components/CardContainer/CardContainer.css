@@ -1,3 +1,16 @@
+#redPartPokeball, #whitePartPokeball {
+   transform-origin: center;
+}
+.search {
+   height: 32px;
+}
+
+.search:hover {
+   /* border: 1px solid red;
+   flex-direction: row; */
+   animation: rotatePokeball 1s;
+}
+
 .cardContainer {
    width: 100%;
    height: 100%;
@@ -6,6 +19,7 @@
 
 .card-Blue01Gradient, .card-Blue02Gradient, .card-RBW01Gradient, .card-RBW02Gradient {
    position: relative;
+   transition: all ease .75s;
 }
 
 .card-Blue01Gradient::before {
@@ -20,6 +34,7 @@
       linear-gradient(#fff 0 0);
    -webkit-mask-composite: xor;
    mask-composite: exclude;
+
 }
 
 .card-Blue02Gradient::before {
@@ -96,4 +111,20 @@
 .cart-pokemon-type {
    width: 24px;
    height: 24px;
+}
+
+@keyframes rotatePokeball {
+     0% { rotate:   0deg; }
+    10% { rotate:  -5deg; }
+    20% { rotate: -10deg; }
+    30% { rotate: -20deg; }
+    40% { rotate: -30deg; }
+    50% { rotate: -40deg; }
+    60% { rotate: -50deg; }
+    70% { rotate: -60deg; }
+    80% { rotate: -70deg; }
+    90% { rotate: -80deg; }
+   100% { 
+      rotate: -90deg; 
+   }
 }

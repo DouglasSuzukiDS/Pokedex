@@ -9,6 +9,9 @@ import { ComponentsTypes } from '../../types/ComponentsType'
 import { serviceLocalAPI } from '../../service/Local.service'
 import { serviceExternalAPI } from '../../service/External.service'
 
+import RedPart from '../../assets/SVGs/Red - Part.svg'
+import WhitePart from '../../assets/SVGs/White - Part.svg'
+
 // https://blog.curso-r.com/posts/2021-11-29-api-pokemon/#:~:text=O%20primeiro%20passo%20para%20acessar%20qualquer%20API%20é%20procurar%20uma%20documentação.&text=Isso%20significa%20que%20devemos%20fazer,(que%20chamamos%20de%20endpoint).
 // https://github.com/PokeAPI/pokeapi/issues/346
 // https://github.com/PokeAPI/sprites
@@ -17,15 +20,16 @@ import { serviceExternalAPI } from '../../service/External.service'
 // https://pokemon.fandom.com/wiki/Poison_type
 // https://horadecodar.com.br/como-salvar-a-saida-do-console-log-em-arquivo/
 
-import pichuAPI from '../../datas/pichu.json'
-import machumpAPI from '../../datas/machamp.json'
-
-import fs from 'fs'
-
 const pokedex = new PokemonClient()
 
 export const CardContainer = ({ className }: ComponentsTypes ) => {
    const [pokemonsLocal, setPokemonsLocal] = useState<PokemonType[]>([])
+   const [showInputSearch, setShowInputSearch] = useState(false)
+
+   const inputSearch = document.querySelector('.search') as HTMLInputElement
+   const redPartPokeball = document.querySelector('#redPartPokeball') as HTMLElement
+   const whitePartPokeball = document.querySelector('#whitePartPokeball') as HTMLElement
+
    
    useEffect(() => {
       getPokemonsAPI()
@@ -33,6 +37,8 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
       // downloadPokemonSVG(pichuAPI)
       // downloadPokemonInfos('pichu')
       // findPokemonById(773)
+      searchArea()
+      hoverEffect()
    }, [])
 
    // External API
@@ -128,17 +134,80 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
       }*/
    }
 
-   console.log(pokemonsLocal)
+   const hoverEffect = () => {
+      const cardsBorder = [...document.querySelectorAll('.card')]
+      //console.log(cardsBorder)
+      cardsBorder.map(card => {
+         // console.log('enter')
+         card.addEventListener('mouseenter', () => {
+            card.classList.add('card-RBW01Gradient')
+            card.classList.remove('card-Blue01Gradient')
+            card.classList.add('bg-Blue01GradientOP')
+            
+            const cardImgBorder = card.querySelector('.card-photo')
+            cardImgBorder?.classList.remove('card-RBW01Gradient')
+            cardImgBorder?.classList.add('card-Blue01Gradient')
+         })
 
-   
+         card.addEventListener('mouseleave', () => {
+            card.classList.remove('card-RBW01Gradient')
+            card.classList.add('card-Blue01Gradient')
+            card.classList.remove('bg-Blue01GradientOP')
+
+            const cardImgBorder = card.querySelector('.card-photo')
+            cardImgBorder?.classList.remove('card-Blue01Gradient')
+            cardImgBorder?.classList.add('card-RBW01Gradient')
+         })
+      })
+   }
+
+   const searchArea = () => {
+      pokeballMouseEnter()
+      pokeballMouseLeave()
+      
+      setTimeout(() => {
+         // setShowInputSearch(true)
+      }, 1500)
+   }
+
+   const pokeballMouseEnter = () => {
+      inputSearch?.addEventListener('mouseenter', () => {
+         redPartPokeball.style.rotate = '-90deg';
+         whitePartPokeball.style.rotate = '-90deg';
+         console.log(whitePartPokeball)
+
+         //setShowInputSearch(true)
+      })
+   }
+
+   const pokeballMouseLeave = () => {
+      inputSearch?.addEventListener('mouseleave', () => {
+         redPartPokeball.style.rotate = '0deg';
+         whitePartPokeball.style.rotate = '0deg';
+         setShowInputSearch(false)
+
+      // inputSearch.style.flexDirection = 'column'
+
+      })
+   }
+
+
    return (
       <>
+         <div className='search flex flex-col my-6 border hover:cursor-pointer'>
+            <img src={ RedPart } alt="Parte de Cima da Pokeball" id='redPartPokeball' />
+            
+               { showInputSearch &&  <input type="text" placeholder='Make you search' id='inputSearch' /> }
+            
+            <img src={ WhitePart } alt="Parte de Baixo da Pokeball" id='whitePartPokeball' />
+         </div>
+
          <section className="cardContainer font-bold flex justify-center items-center flex-wrap overflow-y-auto p-2 gap-2">     
          {
             pokemonsLocal.length !== 0 &&
 
             pokemonsLocal.map(p => (
-               <div className="card card-Blue01Gradient hover:card-RBW01Gradient flex items-center flex-col rounded-lg p-2">
+               <div key={ p.name } className="card card-Blue01Gradient hover:card-RBW01Gradient flex items-center flex-col rounded-lg p-2" onMouseEnter={ hoverEffect }>
 
                   <div className="card-photo flex justify-center items-center card-RBW01Gradient p-2">
                      <img src={ p.image } alt={ p.name } />
@@ -161,14 +230,12 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
                            <span className='flex'>
                               {  
                                  p.type.map((t: any) => (
-                                    <>
-                                       <img 
-                                          className='cart-pokemon-type ml-2'
-                                          src={ t.type.svg } 
-                                          alt={ t.type.name }
-                                       />
-                                    </>
-                                    
+
+                                    <img key={ t.type.name }
+                                       className='cart-pokemon-type ml-2'
+                                       src={ t.type.svg } 
+                                       alt={ t.type.name }
+                                    />
                                  ))
                               }
                            </span>
@@ -191,75 +258,7 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
                </div>
             ))
          }
-            
-
-            
          </section>
       </>
    )
 }
-
-// Save for show types svg
-// { pokemonsLocal.map(pkm => (
- 
-//    <img 
-//       src={ pkm.type.map((t: any) => (
-//          t.type.url
-//       )) }
-//       alt={ pkm.type.map((t: any) => (
-//          t.type.name
-//       )) }
-//    />
-// )) }
-
-/*<div className="card card-Blue01Gradient hover:card-RBW01Gradient flex items-center flex-col rounded-lg p-2">
-
-<div className="card-photo flex justify-center items-center card-RBW01Gradient p-2">
-   <img src={ pokemonsLocal[29].image } alt={ pokemonsLocal[29].name } />
-</div>
-
-<div className="card-body flex justify-between flex-col w-full mt-2 gap-y-2">
-
-   <div className="card-name flex justify-between w-full">
-      <p className='text-pokemon flex items-center'>
-         { (pokemonsLocal[29].name).replace(pokemonsLocal[29].name[0], pokemonsLocal[29].name[0].toLocaleUpperCase()) }
-      </p>
-
-      <p className='text01 flex items-center'>#{pokemonsLocal[29].id}</p>
-   </div>
-
-   <div className="card-infos">
-      <div className="card-type flex justify-between">
-         <p className='text01'>Type:</p>
-
-         <span className='flex'>
-            {  
-               pokemonsLocal[29].type.map((t: any) => (
-                  <>
-                     <img 
-                        className='cart-pokemon-type'
-                        src={ t.type.svg } 
-                        alt={ t.type.name }
-                     />
-                  </>
-                    
-               ))
-            }
-         </span>
-      </div>
-
-      <div className="card-height flex justify-between">
-            <p className='text02'>Height:</p>
-            <p className='text01'>{pokemonsLocal[29].height}</p>
-
-      </div>
-
-      <div className="card-weight flex justify-between">
-            <p className='text02'>Weight:</p>
-            <p className='text01'>{pokemonsLocal[29].weight}</p>
-      </div>
-
-   </div>
-</div>
-
-</div>*/
