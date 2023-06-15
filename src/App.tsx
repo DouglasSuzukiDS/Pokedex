@@ -8,10 +8,10 @@ function App() {
 
   return (
     <>
-      <main className='flex flex-col justify-between items-center border'>
+      <main className='flex flex-col justify-between items-center'>
         {/* <Header /> */}
         <CardContainer />
-        
+        <Footer />
      </main>
     </>
   )

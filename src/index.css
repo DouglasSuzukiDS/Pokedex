@@ -39,6 +39,8 @@
   --Blue01Gradient: linear-gradient(180deg, #273D78 0%, #5C6579 50%, #3E5DB3 100%); /* Top tpo Bottom */
   --Blue02Gradient: linear-gradient(150.94deg, #273D78 1.11%, #5C6579 50.04%, #3E5DB3 100%); 
 
+  --Blue01GradientOP: linear-gradient(180deg, rgba(39, 61, 120, .3) 0%, rgba(92, 102, 122, .3) 50%, rgba(62, 93, 179, .3) 100%); /* Top tpo Bottom */
+
 
   --BluePokemon: #3E5DB3;
   --DarkBluePokemon: #273D78;
@@ -90,4 +92,16 @@
   color: var(--BluePokemon);
   font-size: 14px;
   /* -webkit-text-stroke: 0.01px var(--BluePokemon); */
+}
+
+.text03 {
+  color: #FFF;
+  font-size: 14px;
+  /* -webkit-text-stroke: 0.01px var(--BluePokemon); */
+}
+
+.bg-Blue01GradientOP {
+  background: var(--Blue01GradientOP);
+  opacity: .75;
+  transition: all ease .75s;
 }

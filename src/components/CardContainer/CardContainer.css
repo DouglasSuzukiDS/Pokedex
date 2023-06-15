@@ -1,14 +1,41 @@
 #redPartPokeball, #whitePartPokeball {
    transform-origin: center;
 }
-.search {
+
+.searchContainer {
    height: 32px;
 }
 
-.search:hover {
+.searchContainer:hover {
    /* border: 1px solid red;
    flex-direction: row; */
    animation: rotatePokeball 1s;
+}
+
+#redPartPokeball:hover, #whitePartPokeball:hover {
+}
+
+#searchInput {
+   font-size: 16px;
+   width: 200px;
+   height: 100%;
+   text-align: center;
+   background-color: transparent;
+   /* padding: 8px; */
+   border: none;
+   outline: none;
+   font-family: 'Pokemon Solid';
+   letter-spacing: 4px;
+   border: 1px solid red;
+   -webkit-text-stroke: 1px var(--BluePokemon);
+   /* /border: 1px solid #3E5DB3; */
+   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#searchInput::placeholder {
+   color: var(--InsidePokeball03);
+   font-weight: bold;
+   -webkit-text-stroke: 0;
 }
 
 .cardContainer {
@@ -34,7 +61,6 @@
       linear-gradient(#fff 0 0);
    -webkit-mask-composite: xor;
    mask-composite: exclude;
-
 }
 
 .card-Blue02Gradient::before {

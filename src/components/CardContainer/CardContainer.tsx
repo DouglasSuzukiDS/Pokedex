@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, ChangeEvent } from 'react'
 import './CardContainer.css'
 
 import { PokemonClient } from 'pokenode-ts'
@@ -22,23 +22,25 @@ import WhitePart from '../../assets/SVGs/White - Part.svg'
 
 const pokedex = new PokemonClient()
 
-export const CardContainer = ({ className }: ComponentsTypes ) => {
+export const CardContainer = ({ className }: ComponentsTypes) => {
    const [pokemonsLocal, setPokemonsLocal] = useState<PokemonType[]>([])
+   const [pokemonsFind, setPokemonsFind] = useState<PokemonType[]>([])
    const [showInputSearch, setShowInputSearch] = useState(false)
 
-   const inputSearch = document.querySelector('.search') as HTMLInputElement
+   const searchContainer = document.querySelector('#searchContainer') as HTMLDivElement
+   const searchInput = document.querySelector('#searchInput') as HTMLInputElement
    const redPartPokeball = document.querySelector('#redPartPokeball') as HTMLElement
    const whitePartPokeball = document.querySelector('#whitePartPokeball') as HTMLElement
 
-   
+
    useEffect(() => {
       getPokemonsAPI()
       // getPokemonsList()
       // downloadPokemonSVG(pichuAPI)
       // downloadPokemonInfos('pichu')
       // findPokemonById(773)
-      searchArea()
-      hoverEffect()
+      // searchArea()
+      // hoverEffect()
    }, [])
 
    // External API
@@ -63,7 +65,7 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
          .catch(e => console.log(e))
    }
 
-   const downloadPokemonInfos = async(name: string) => {
+   const downloadPokemonInfos = async (name: string) => {
       await pokedex.getPokemonByName(`${name}`)
          // .then(res => console.log(res))
          .then(res => {
@@ -76,14 +78,14 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
                base_experience: res.base_experience,
                sprites: res.sprites
             }
-   
-            const blob = new Blob([JSON.stringify(data)], {type: "application/json"});
+
+            const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download =`${name}.json`;
+            link.download = `${name}.json`;
             link.click();
          })
-   
+
          .catch(e => console.log(e))
    }
 
@@ -93,6 +95,7 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
          .then(res => {
             // console.log(res.data.pokemon)
             setPokemonsLocal(res.data.pokemon)
+            setPokemonsFind(res.data.pokemon)
          })
          .catch(err => console.log(`Err: ${err}`))
    }
@@ -116,34 +119,18 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
             })
             .catch(e => console.log(e))
       }
-      /*else {
-         const officialArtwork = obj.sprites.other.home.front_default
-         console.log(officialArtwork)
-   
-         await axios.get(officialArtwork)
-            .then(res => {
-               console.log(res)
-               const blob = new Blob([res], {type: 'image/png'});
-               const link = document.createElement('a');
-               link.href = window.URL.createObjectURL(blob);
-               link.download =`${obj.id}.svg`;
-               link.click();
-               console.log(res)
-            })
-            .catch(e => console.log(e))
-      }*/
    }
 
    const hoverEffect = () => {
       const cardsBorder = [...document.querySelectorAll('.card')]
       //console.log(cardsBorder)
       cardsBorder.map(card => {
-         // console.log('enter')
+         // alert('enter')
          card.addEventListener('mouseenter', () => {
             card.classList.add('card-RBW01Gradient')
             card.classList.remove('card-Blue01Gradient')
             card.classList.add('bg-Blue01GradientOP')
-            
+
             const cardImgBorder = card.querySelector('.card-photo')
             cardImgBorder?.classList.remove('card-RBW01Gradient')
             cardImgBorder?.classList.add('card-Blue01Gradient')
@@ -162,102 +149,146 @@ export const CardContainer = ({ className }: ComponentsTypes ) => {
    }
 
    const searchArea = () => {
-      pokeballMouseEnter()
-      pokeballMouseLeave()
-      
+      // pokeballMouseEnter()
+      // pokeballMouseLeave()
+      /*search.addEventListener('mouseenter', () => {
+         // search.style.animation = 'rotatePokeball 1s'
+      })*/
+
+      searchContainer.addEventListener('onmouseleave', () => {
+         alert('ok')
+         // redPartPokeball.style.animation = 'rotatePokeball 1s'
+         // whitePartPokeball.style.animation = 'rotatePokeball 1s'
+
+      })
+      // console.log(searchContainer)
+
       setTimeout(() => {
-         // setShowInputSearch(true)
+         setShowInputSearch(true)
       }, 1500)
    }
 
    const pokeballMouseEnter = () => {
-      inputSearch?.addEventListener('mouseenter', () => {
+      searchContainer?.addEventListener('mouseenter', () => {
          redPartPokeball.style.rotate = '-90deg';
          whitePartPokeball.style.rotate = '-90deg';
-         console.log(whitePartPokeball)
+         // console.log(whitePartPokeball)
 
-         //setShowInputSearch(true)
+         setShowInputSearch(true)
+         searchContainer.style.flexDirection = 'row'
+
       })
    }
 
    const pokeballMouseLeave = () => {
-      inputSearch?.addEventListener('mouseleave', () => {
-         redPartPokeball.style.rotate = '0deg';
-         whitePartPokeball.style.rotate = '0deg';
-         setShowInputSearch(false)
+      searchContainer?.addEventListener('mouseleave', () => {
+         if (searchInput.value === '') {
+            redPartPokeball.style.rotate = '0deg';
+            whitePartPokeball.style.rotate = '0deg';
+            setShowInputSearch(false)
 
-      // inputSearch.style.flexDirection = 'column'
-
+            searchContainer.style.flexDirection = 'column'
+         }
       })
    }
+   const searchPokemon = (e: ChangeEvent<HTMLInputElement>) => {
+      const find = (e.target.value).toLocaleLowerCase()
+      const filterByName = pokemonsFind.filter(pkm => pkm.name.includes(find))
+      const filterByID = pokemonsFind.filter(pkm => (pkm.id).toString() === find)
+      const filterByType = pokemonsFind.map(pkm => {
+         // return pkm.type.filter(tp => tp.type.name === find)
+         // console.log(pkm.type.map(tp => tp.type.map))
 
+      })
+
+      // console.log(find)
+      setPokemonsFind(pokemonsLocal)
+      if (find === '') {
+         setPokemonsFind(pokemonsLocal)
+      } else if (filterByName.length > 0) {
+         setPokemonsFind(filterByName)
+      } else if (filterByID.length > 0) {
+         setPokemonsFind(filterByID)
+      } else if (filterByType.length > 0) {
+         // setPokemonsFind(filterByType)
+      }
+   }
 
    return (
       <>
-         <div className='search flex flex-col my-6 border hover:cursor-pointer'>
+        <div className='searchContainer flex flex-col my-6 border hover:cursor-pointer' id='searchContainer' onMouseEnter={ searchArea } onMouseLeave={ searchArea }>
             <img src={ RedPart } alt="Parte de Cima da Pokeball" id='redPartPokeball' />
             
-               { showInputSearch &&  <input type="text" placeholder='Make you search' id='inputSearch' /> }
+               { showInputSearch &&  
+                  <input 
+                     type="text" 
+                     placeholder='Make you search' 
+                     id='searchInput' 
+                     className='text01'
+                     onChange={ searchPokemon } 
+                  />
+               }
             
             <img src={ WhitePart } alt="Parte de Baixo da Pokeball" id='whitePartPokeball' />
          </div>
 
-         <section className="cardContainer font-bold flex justify-center items-center flex-wrap overflow-y-auto p-2 gap-2">     
-         {
-            pokemonsLocal.length !== 0 &&
+         <section className="cardContainer font-bold flex flex-row justify-center items-center flex-wrap overflow-y-auto p-2 gap-2">
+            {
+               pokemonsFind.length !== 0 &&
 
-            pokemonsLocal.map(p => (
-               <div key={ p.name } className="card card-Blue01Gradient hover:card-RBW01Gradient flex items-center flex-col rounded-lg p-2" onMouseEnter={ hoverEffect }>
+               pokemonsFind.map(p => (
+                  <div key={p.id}
+                     className="card card-Blue01Gradient hover:card-RBW01Gradient flex items-center flex-col rounded-lg p-2"
+                     onMouseEnter={hoverEffect} >
 
-                  <div className="card-photo flex justify-center items-center card-RBW01Gradient p-2">
-                     <img src={ p.image } alt={ p.name } />
-                  </div>
-
-                  <div className="card-body flex justify-between flex-col w-full mt-2 gap-y-2">
-
-                     <div className="card-name flex justify-between w-full">
-                        <p className='text-pokemon flex items-center'>
-                           { (p.name).replace(p.name[0], p.name[0].toLocaleUpperCase()) }
-                        </p>
-
-                        <p className='text01 flex items-center'>#{p.id}</p>
+                     <div className="card-photo flex justify-center items-center card-RBW01Gradient p-2">
+                        <img src={p.image} alt={p.name} />
                      </div>
 
-                     <div className="card-infos">
-                        <div className="card-type flex justify-between">
-                           <p className='text01'>Type:</p>
+                     <div className="card-body flex justify-between flex-col w-full mt-2 gap-y-2">
 
-                           <span className='flex'>
-                              {  
-                                 p.type.map((t: any) => (
+                        <div className="card-name flex justify-between w-full">
+                           <p className='text-pokemon flex items-center'>
+                              {(p.name).replace(p.name[0], p.name[0].toLocaleUpperCase())}
+                           </p>
 
-                                    <img key={ t.type.name }
-                                       className='cart-pokemon-type ml-2'
-                                       src={ t.type.svg } 
-                                       alt={ t.type.name }
-                                    />
-                                 ))
-                              }
-                           </span>
+                           <p className='text01 flex items-center'>#{p.id}</p>
                         </div>
 
-                        <div className="card-height flex justify-between">
+                        <div className="card-infos">
+                           <div className="card-type flex justify-between">
+                              <p className='text01'>Type:</p>
+
+                              <span className='flex'>
+                                 {
+                                    p.type.map((t: any) => (
+                                       <img key={t.type.name}
+                                          className='cart-pokemon-type ml-2'
+                                          src={t.type.svg}
+                                          alt={t.type.name}
+                                       />
+                                    ))
+                                 }
+                              </span>
+                           </div>
+
+                           <div className="card-height flex justify-between">
                               <p className='text02'>Height:</p>
                               <p className='text01'>{p.height}</p>
 
-                        </div>
+                           </div>
 
-                        <div className="card-weight flex justify-between">
+                           <div className="card-weight flex justify-between">
                               <p className='text02'>Weight:</p>
                               <p className='text01'>{p.weight}</p>
+                           </div>
+
                         </div>
-
                      </div>
-                  </div>
 
-               </div>
-            ))
-         }
+                  </div>
+               ))
+            }
          </section>
       </>
    )
