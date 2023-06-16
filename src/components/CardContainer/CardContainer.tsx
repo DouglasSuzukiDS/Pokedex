@@ -148,24 +148,39 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
       })
    }
 
-   const searchArea = () => {
-      // pokeballMouseEnter()
-      // pokeballMouseLeave()
-      /*search.addEventListener('mouseenter', () => {
-         // search.style.animation = 'rotatePokeball 1s'
-      })*/
-
-      searchContainer.addEventListener('onmouseleave', () => {
-         alert('ok')
-         // redPartPokeball.style.animation = 'rotatePokeball 1s'
-         // whitePartPokeball.style.animation = 'rotatePokeball 1s'
-
-      })
-      // console.log(searchContainer)
-
+   const searchAreaRotate = () => {
+      searchContainer.classList.add('searchContainerRotate')
+      // redPartPokeball.classList.add('searchContainerRotate')
+      // whitePartPokeball.classList.add('searchContainerRotate')
+      
       setTimeout(() => {
+         redPartPokeball.style.rotate = '-90deg'
+         whitePartPokeball.style.rotate = '-90deg'
+         searchContainer.classList.add('flex-row')
+         searchContainer.classList.remove('flex-col')
          setShowInputSearch(true)
-      }, 1500)
+      }, 1180)
+   }
+
+   const searchAreaInitial = () => {
+      // console.log(`O valor no input é ${searchInput.value}`)
+      if(showInputSearch) {
+        
+         //searchContainer.classList.remove('searchContainerRotate')
+         // redPartPokeball.classList.add('searchContainerRotate')
+         // whitePartPokeball.classList.add('searchContainerRotate')
+         // searchContainer.style.animation = 'rotatePokeballInitial 1s'
+         
+         setTimeout(() => {
+            searchInput.classList.add('hiddenInputSearch')
+            redPartPokeball.style.rotate = '180deg'
+            whitePartPokeball.style.rotate = '180deg'
+            searchContainer.classList.add('flex-col')
+            searchContainer.classList.remove('flex-row')
+            setShowInputSearch(!showInputSearch)
+         }, 1180)
+         
+      }
    }
 
    const pokeballMouseEnter = () => {
@@ -191,6 +206,7 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
          }
       })
    }
+
    const searchPokemon = (e: ChangeEvent<HTMLInputElement>) => {
       const find = (e.target.value).toLocaleLowerCase()
       const filterByName = pokemonsFind.filter(pkm => pkm.name.includes(find))
@@ -216,7 +232,7 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
 
    return (
       <>
-        <div className='searchContainer flex flex-col my-6 border hover:cursor-pointer' id='searchContainer' onMouseEnter={ searchArea } onMouseLeave={ searchArea }>
+        <div className='searchContainer flex flex-col my-6 border hover:cursor-pointer' id='searchContainer' onMouseEnter={ searchAreaRotate } onClick={ searchAreaInitial }>
             <img src={ RedPart } alt="Parte de Cima da Pokeball" id='redPartPokeball' />
             
                { showInputSearch &&  
@@ -224,7 +240,7 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
                      type="text" 
                      placeholder='Make you search' 
                      id='searchInput' 
-                     className='text01'
+                     className='text01 border-Dragon'
                      onChange={ searchPokemon } 
                   />
                }

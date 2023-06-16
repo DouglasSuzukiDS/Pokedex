@@ -9,7 +9,7 @@ export const Footer = () => {
    }
 
    return (
-      <footer className="flex flex-col font-bold text-pokemon border-y-blue-950">
+      <footer className="flex flex-col font-bold text-pokemon">
          <span>
             <div className="redFooter bg-RedPokeball"></div>
 
