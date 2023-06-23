@@ -3,6 +3,7 @@ import { Footer } from './components/Footer/Footer'
 import { Header } from './components/Header/Header'
 
 import './App.css'
+import { Register } from './components/Register/Register'
 
 function App() {
 
@@ -10,7 +11,8 @@ function App() {
     <>
       <main className='flex flex-col justify-between items-center'>
         {/* <Header /> */}
-        <CardContainer />
+        {/* <CardContainer /> */}
+        <Register />
         <Footer />
      </main>
     </>

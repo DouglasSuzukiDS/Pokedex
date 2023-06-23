@@ -1,0 +1,143 @@
+main {
+   
+}
+
+.formRegister {
+   width: 400px;
+   height: 400px;
+}
+
+.formRegister p {
+   font-size: 24px;
+}
+
+.groupInput {
+   border: 1px solid red;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 16px;
+}
+
+.groupInput input, .groupInput select {
+   background-color: transparent;
+   font-size: 16px;
+   font-weight: bold;
+   width: 50%;
+   outline: none;
+}
+
+.groupInput input:nth-child(2) {
+   text-align: end;
+   border: 1px solid blue;
+}
+
+.groupInput input::placeholder, .groupInput select, .groupInput div {
+   color: #FFF;
+}
+
+.groupInput select {
+   border: none;
+   background: transparent !important;
+}
+
+/* Favorite Type Pokemon */
+
+#imgTypePokemon {
+   width: 80px;
+   height: 80px;
+   padding: 8px;
+}
+
+#imgTypePokemon img {
+   width: 100%;
+}
+
+/* Type User (Trainer or Gym Leader) */
+
+.groupInput div {
+   font-size: 16px;
+   font-weight: bold;
+}
+
+.groupInput .circle {
+   width: 32px;
+   height: 32px;
+   padding: 4px;
+   border-radius: 50px;
+   border: 2px solid var(--BluePokemon);
+}
+
+.circleYellowPokemon {
+   width: 32px;
+   height: 32px;
+   padding: 4px;
+   border-radius: 50px;
+   border: 2px solid var(--YellowPokemon);
+}
+
+.groupInput .circle img {
+   width: 100%;
+   height: 100%;
+}
+
+.form-Blue01Gradient, .form-Blue02Gradient, .form-RBW01Gradient, .form-RBW02Gradient {
+   position: relative;
+   transition: all ease .75s;
+}
+
+.form-Blue01Gradient::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 8px;
+   padding: 2px;
+   background: var(--Blue01Gradient);
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
+}
+
+.form-Blue02Gradient::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 8px;
+   padding: 2px;
+   background: var(--Blue02Gradient);
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
+}
+
+.form-RBW01Gradient::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 8px;
+   padding: 2px;
+   background: var(--RBW01Gradient);
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
+}
+
+.form-RBW02Gradient::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: 8px;
+   padding: 2px;
+   background: var(--RBW02Gradient);
+   -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+   -webkit-mask-composite: xor;
+   mask-composite: exclude;
+}

@@ -105,3 +105,23 @@
   opacity: .75;
   transition: all ease .75s;
 }
+
+
+.borderInsidePokeballGradient {
+  position: relative;
+  transition: all ease .75s;
+}
+
+.borderInsidePokeballGradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 2px;
+  background: var(--InsidePokeballGradient);
+  -webkit-mask:
+     linear-gradient(#fff 0 0) content-box,
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
