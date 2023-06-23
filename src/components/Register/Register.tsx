@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react'
 import './Register.css'
-import { PokemonsExternalContext } from '../../context/PokemonsExternalAPI/PokemonsExtenalContext'
-import { PokemonsLocalContext } from '../../context/PokemonsLocalAPI/PokemonsLocalContext'
-import axios from 'axios'
 
 import Pokeball from '../../assets/SVGs/Pokeball - Parts.svg'
 
@@ -18,6 +15,28 @@ export const Register = () => {
       })
    }
 
+   const handleShowTypePokemonSVG = () => {
+      const selectTypePokemon = document.querySelector('#TypePokemon') as HTMLSelectElement
+      const imgTypePokemonArea = document.querySelector('#imgTypePokemonArea') as HTMLDivElement
+      const imgTypePokemon = document.querySelector('.imgTypePokemon img') as HTMLImageElement
+
+      selectTypePokemon?.addEventListener('change', () => {
+         imgTypePokemon.src = `/src/assets/TypesPokemons/${selectTypePokemon.value}.svg`
+         imgTypePokemon.alt = `${selectTypePokemon.value}`
+      })
+
+      if(selectTypePokemon.value !== 'Default') {
+         imgTypePokemonArea.classList.remove('borderInsidePokeballGradient') 
+         imgTypePokemonArea.classList.add('form-RBW01Gradient')
+      } else {
+         imgTypePokemon.src = `/src/assets/SVGs/Pokeball - Parts.svg`
+         imgTypePokemon.alt = `${selectTypePokemon.value}`
+
+         imgTypePokemonArea.classList.remove('form-RBW01Gradient')
+         imgTypePokemonArea.classList.add('borderInsidePokeballGradient') 
+      }
+   }
+
    const handleChooseTypeUser = () => {
       setGymLeader(!gymLeader)
       console.log(gymLeader)
@@ -29,18 +48,18 @@ export const Register = () => {
          <form  className="formRegister bg-Blue01GradientOP p-4">
             <p className='text-pokemon text-center'>Register</p>
 
-            <div className="groupInput">
+            <div className="groupInput"> {/* Name & Login */}
                <input type="text" placeholder='Name' className='text-pokemon' />
                <input type="text" placeholder='Login' className='text-pokemon' />
             </div>
 
-            <div className="groupInput">
+            <div className="groupInput"> {/* Password */}
                <input type="password" placeholder='Password' className='text-pokemon' />
                <input type="password" placeholder='Confirm Password' className='text-pokemon' />
             </div>
 
-            <div className="groupInput">
-               <select name="TypePokemon" id="TypePokemon" className='text-pokemon' onChange={ () => '' }>
+            <div className="groupInput" onClick={ handleShowTypePokemonSVG }> {/* Favorite Type */}
+               <select name="TypePokemon" id="TypePokemon" className='text-pokemon'>
                   <option value="Default">Favorite Type</option>
                   {
                      typesPokemons.map((typesPokemon, key) => (
@@ -51,12 +70,12 @@ export const Register = () => {
                   }
                </select>
                
-               <div className="borderInsidePokeballGradient flex justify-center items-center" id='imgTypePokemon'>
-                  <img src={ Pokeball } alt="Pokeball"  />
+               <div className="borderInsidePokeballGradient flex justify-center items-center imgTypePokemon" id='imgTypePokemonArea'>
+                  <img src={ Pokeball } alt="Pokeball" />
                </div>
             </div>
 
-            <div className="groupInput" id='isGymLeaderDiv' onClick={ handleChooseTypeUser }>
+            <div className="groupInput" id='isGymLeaderDiv' onClick={ handleChooseTypeUser }> {/* Trainer or Gym Leader */}
                { !gymLeader ?
                   <div className='flex justify-between items-center w-full gap-4'> 
 
