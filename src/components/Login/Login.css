@@ -1,0 +1,13 @@
+.groupInput label {
+   font-size: 16px;
+   color: #FFF;
+   font-weight: bold;
+}
+
+@media (max-width: 500px) {
+   .groupInput label {
+      /* border: 1px solid gold; */
+      width: 100%;
+      justify-content: flex-start;
+   }
+}

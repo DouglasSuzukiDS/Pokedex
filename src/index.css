@@ -100,12 +100,19 @@
   /* -webkit-text-stroke: 0.01px var(--BluePokemon); */
 }
 
+.groupInput {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
 .bg-Blue01GradientOP {
   background: var(--Blue01GradientOP);
   opacity: .75;
   transition: all ease .75s;
 }
-
 
 .borderInsidePokeballGradient {
   position: relative;
@@ -124,4 +131,29 @@
      linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+}
+
+.border-RBW01Gradient {
+  --background-color: var(--InsidePokeball02);
+  --border-color: linear-gradient(to bottom, #FF1C1C, #000000 , #FFFFFF);
+
+  background: linear-gradient(
+        var(--background-color),
+        var(--background-color)
+      )
+      padding-box,
+    var(--border-color) border-box;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+
+@media (max-width: 500px) {
+  .groupInput {
+    flex-direction: column;
+  }
+
+  .groupInput input {
+    /* border: 1px solid gold; */
+    width: 100%;
+  }
 }

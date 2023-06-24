@@ -3,4 +3,5 @@ export type ComponentsTypes = {
    children?: JSX.Element
    className?: string,
    onClicK?: () => void
+   close?: () => void
 }

@@ -31,5 +31,12 @@ footer span {
 }
 
 .aboutMe {
-   margin-top: -54px;
+   margin-top: -60px;
+}
+
+@media (max-width: 500px) {
+   .aboutMe {
+      justify-content: center !important;
+      z-index: 35 !important;
+   }
 }

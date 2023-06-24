@@ -1,22 +1,10 @@
-main {
-   
-}
-
 .formRegister {
    width: 400px;
-   height: 400px;
+   /* height: 450px; */
 }
 
 .formRegister p {
    font-size: 24px;
-}
-
-.groupInput {
-   border: 1px solid red;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-top: 16px;
 }
 
 .groupInput input, .groupInput select {
@@ -29,7 +17,7 @@ main {
 
 .groupInput input:nth-child(2) {
    text-align: end;
-   border: 1px solid blue;
+   /* border: 1px solid blue; */
 }
 
 .groupInput input::placeholder, .groupInput select, .groupInput div {
@@ -83,7 +71,79 @@ main {
    height: 100%;
 }
 
-.form-Blue01Gradient, .form-Blue02Gradient, .form-RBW01Gradient, .form-RBW02Gradient {
+.btn {
+   border-radius: 8px;
+   padding: 8px;
+   font-size: 16px;
+   font-weight: bold;
+   transition: all ease .75;
+}
+
+.btn:hover {
+   opacity: .75;
+}
+
+.btn img {
+   width: 24px;
+   height: 24px;
+}
+
+.btn-yellow {
+   background-color: var(--YellowPokemon);
+   color: var(--AquaPokemon);
+}
+
+.btn-blue {
+   background-color: var(--BluePokemon);
+   color: var(--AquaPokemon);
+}
+
+.btn-aqua {
+   background-color: var(--AquaPokemon);
+   color: var(--BluePokemon);
+}
+
+@media (max-width: 500px) {
+   span {
+      margin: 16px !important;
+   }
+
+   .formRegister {
+      width: 100%;
+   }
+
+   #favorite {
+      flex-direction: row;
+   }
+   
+   #favorite div {
+      width: 48px;
+      height: 48px;
+   }
+
+   #isGymLeaderDiv {
+      margin-top: 0px;
+   }
+   
+   #isGymLeaderDiv > div {
+      /* border: 1px solid red; */
+      flex-direction: column;
+      gap: 0px;
+
+   }
+
+   #isGymLeaderDiv > div > div {
+      /* border: 1px solid gold; */
+      width: 100%;
+      padding: -20px !important;
+   }
+
+   .groupInput.gap-4 {
+      flex-direction: row;
+   }
+}
+
+/*.form-Blue01Gradient, .form-Blue02Gradient, .form-RBW01Gradient, .form-RBW02Gradient {
    position: relative;
    transition: all ease .75s;
 }
@@ -126,7 +186,7 @@ main {
    -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
-   -webkit-mask-composite: xor;
+   -webkit-mask-composite: xor; 
    mask-composite: exclude;
 }
 
@@ -142,4 +202,4 @@ main {
       linear-gradient(#fff 0 0);
    -webkit-mask-composite: xor;
    mask-composite: exclude;
-}
+}*/
