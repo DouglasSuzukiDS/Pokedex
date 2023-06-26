@@ -82,6 +82,16 @@
   font-size: 16px;
 }
 
+.text-pokemon-white {
+  font-family: var(--Text-Pokemon);
+  color: #FFF;
+  letter-spacing: 0.11rem;
+  box-shadow: var(--Border-Shadow);
+  text-shadow: var(--Text-Shadow);
+  -webkit-text-stroke: .8px var(--BluePokemon);
+  font-size: 16px;
+}
+
 .text01 {
   color: var(--YellowPokemon);
   font-size: 16px;
