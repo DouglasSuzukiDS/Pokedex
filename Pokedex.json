@@ -1,0 +1,108 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Pokedex",
+    "dateExported": "2023-06-28T01:27:48.831Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b381d11e-af7f-463f-baf0-22e9f0c976fb",
+            "colId": "5a05ecbd-d6be-4c4f-8b7e-e60e141c7e9e",
+            "containerId": "",
+            "name": "Users",
+            "url": "localhost:1880/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-08T00:35:38.805Z",
+            "modified": "2023-06-08T00:35:38.805Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "30e0a6f7-acb0-4174-b412-f0571c203380",
+            "colId": "5a05ecbd-d6be-4c4f-8b7e-e60e141c7e9e",
+            "containerId": "",
+            "name": "Find User",
+            "url": "localhost:1880/findUser/nick.szk",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-06-28T00:00:22.737Z",
+            "modified": "2023-06-28T00:19:58.115Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6ced1666-66e1-438c-87e9-34d1606ec37d",
+            "colId": "5a05ecbd-d6be-4c4f-8b7e-e60e141c7e9e",
+            "containerId": "",
+            "name": "Register New User",
+            "url": "localhost:1880/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-08T00:35:38.823Z",
+            "modified": "2023-06-27T22:36:54.833Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\t\"userName\": \"Max\",\n  \"userLogin\": \"Max.szk\",\n  \"userPassword\": \"123\",\n  \"userPokemonFavoriteType\": \"Flying\",\n  \"userCategory\": \"Trainer\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "26d0e8a0-f5de-47ba-b266-42b6dc677e36",
+            "colId": "5a05ecbd-d6be-4c4f-8b7e-e60e141c7e9e",
+            "containerId": "",
+            "name": "Edit User",
+            "url": "localhost:1880/edit/1",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-06-27T22:40:04.050Z",
+            "modified": "2023-06-27T22:47:34.372Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userName\": \"Nick\",\n  \"userLogin\": \"nick.szk\",\n  \"userPassword\": \"123\",\n  \"userPokemonFavoriteType\": \"Dragon\",\n  \"userCategory\": \"Gym Leader\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ea1f596e-7bf8-461d-b912-81f81402ae0b",
+            "colId": "5a05ecbd-d6be-4c4f-8b7e-e60e141c7e9e",
+            "containerId": "",
+            "name": "Delete User",
+            "url": "localhost:1880/delete/3",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2023-06-27T22:50:19.775Z",
+            "modified": "2023-06-27T22:50:44.710Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c044ccf2-23dd-4b55-a8a3-fed2a0e70b86",
+            "colId": "5a05ecbd-d6be-4c4f-8b7e-e60e141c7e9e",
+            "containerId": "",
+            "name": "Login",
+            "url": "localhost:1880/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-06-27T22:52:48.126Z",
+            "modified": "2023-06-27T22:53:46.795Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userLogin\": \"nick.szk\",\n  \"userPassword\": 123\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
