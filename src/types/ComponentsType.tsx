@@ -4,4 +4,5 @@ export type ComponentsTypes = {
    className?: string,
    onClicK?: () => void
    close?: () => void
+   showCardContainer?: () => void
 }

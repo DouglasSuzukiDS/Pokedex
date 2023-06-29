@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { CardContainer } from './components/CardContainer/CardContainer'
 import { Footer } from './components/Footer/Footer'
 import { Header } from './components/Header/Header'
@@ -9,20 +9,50 @@ import { Login } from './components/Login/Login'
 
 
 function App() {
-  const [register, setRegister] = useState(true)
-  const [login, setLogin] = useState(false)
+  const [registerModal, setRegisterModal] = useState(true)
+  const [loginModal, setLoginModal] = useState(false)
+  const [cardContainerArea, setCardContainerArea] = useState(false)
+
+  useEffect(() => {
+    const lc = localStorage.getItem('user')
+
+    if(lc !== undefined && lc !== null) {
+      setLoginModal(false)
+      setRegisterModal(false)
+
+      setCardContainerArea(true)
+    } else {
+      handleCloseSystem()
+    }
+  }, [])
 
   const handleShowRegisterModal = () => {
-    setRegister(!register)
+    setRegisterModal(!registerModal)
 
-    setLogin(false)
+    setLoginModal(false)
   }
 
   const handleShowLoginModal = () => {
-    setLogin(!login)
+    setLoginModal(!loginModal)
 
-    setRegister(false)
+    setRegisterModal(false)
   }
+
+  const handleShowCardContainer = () => {
+    setLoginModal(!loginModal)
+
+    setCardContainerArea(!cardContainerArea)
+  }
+
+  const handleCloseSystem = () => {
+    setLoginModal(true)
+    setRegisterModal(false)
+    setCardContainerArea(false)
+  }
+
+  // useEffect(() => {
+   
+  // })
 
   return (
     <>
@@ -30,15 +60,19 @@ function App() {
         {/* <Header /> */}
         {/* <CardContainer /> */}
 
-        { register &&
+        { registerModal &&
           <Register close={ handleShowLoginModal } />
         }
 
-        { login &&
-          <Login close={ handleShowRegisterModal } />
+        { loginModal &&
+          <Login close={ handleShowRegisterModal } showCardContainer={ handleShowCardContainer } />
         }
 
-        <Footer />
+        { cardContainerArea &&
+          <CardContainer />
+        }
+
+        <Footer close={ handleCloseSystem } />
      </main>
     </>
   )

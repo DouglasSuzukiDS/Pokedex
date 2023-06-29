@@ -6,6 +6,7 @@ import Normal from '../../assets/TypesPokemons/Normal.svg'
 import Fire from '../../assets/TypesPokemons/Fire.svg'
 import { ComponentsTypes } from '../../types/ComponentsType'
 import axios from 'axios'
+import { UserType } from '../../types/UserType'
 
 export const Register = ({ close }: ComponentsTypes) => {
    const [name, setName] = useState('')
@@ -34,7 +35,7 @@ export const Register = ({ close }: ComponentsTypes) => {
       "imgTypePokemon",
    ].join(" ")
 
-   const [API, setAPI] = useState(`http://localhost:1880`)
+   const API = `http://localhost:1880`
    const [find, setFind] = useState('')
 
    const handleChooseTypeUser = () => {
@@ -65,9 +66,16 @@ export const Register = ({ close }: ComponentsTypes) => {
 
             if (favoriteType !== 'Default') {
 
-               findUser()
+               let result: any
+               await findUser()
+                  .then(res => {
+                     console.log(res)
+                     result = res
+                  })
 
-               if (find.length === 0) {
+               // console.log(result?.data.length)
+
+               if (result?.data.length === 0) {
                   await axios.post(`${API}/register`, {
                      userName: name,
                      userLogin: login,
@@ -75,19 +83,19 @@ export const Register = ({ close }: ComponentsTypes) => {
                      userPokemonFavoriteType: favoriteType,
                      userCategory: gymLeader ? 'Gym Leader' : 'Trainer'
                   })
-                  .then(res => {
-                     if(res.status === 200) {
-                        console.log(res.data)
-                        alert('Usuário cadastrado com sucesso')
+                     .then(res => {
+                        if (res.status === 200) {
+                           console.log(res.data)
+                           alert('Sucessfully registered!')
 
-                        handleClear(e)
+                           handleClear(e)
 
-                        close && close()
-                     }
-                  })
-                  .catch(err => console.log(err.message))
+                           close && close()
+                        }
+                     })
+                     .catch(err => console.log(err.message))
                } else {
-                  alert(`The login not available. Please choose other login to register.`)
+                  alert(`The login is not available. Please, choose other login to register.`)
                }
             } else {
                alert(`Please, choose one type of Pokemons. Choose the type you like best. \n\nIf you don't like any type, you can choose the 'Normal' type Pokemons.`)
@@ -103,9 +111,14 @@ export const Register = ({ close }: ComponentsTypes) => {
    }
 
    const findUser = async () => {
-      await axios.get(`${API}/findUser/${login}`)
-         .then(res => setFind(res.data))
-         .catch(err => console.log(err.message))
+      const response: UserType[] = await axios.get(`${API}/findUser/${login}`)
+      /*.then(res => {
+         setFind(res.data)
+         response.push(res.data)
+      })
+      .catch(err => console.log(err.message))*/
+
+      return response
    }
 
    const handleLoginModal = (e: FormEvent<HTMLButtonElement>) => {
@@ -186,7 +199,7 @@ export const Register = ({ close }: ComponentsTypes) => {
                   </div>
                </div>
 
-               <div className="groupInput" id='isGymLeaderDiv' onClick={ handleChooseTypeUser }> {/* Trainer or Gym Leader */}
+               <div className="groupInput" id='isGymLeaderDiv' onClick={handleChooseTypeUser}> {/* Trainer or Gym Leader */}
                   {!gymLeader ?
                      <div className='flex justify-between items-center w-full gap-4 cursor-pointer'>
 

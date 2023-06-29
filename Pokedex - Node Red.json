@@ -128,7 +128,7 @@
         "z": "521df1401aeac40e",
         "mydb": "2d3e8f48bcc11790",
         "name": "",
-        "x": 500,
+        "x": 520,
         "y": 360,
         "wires": [
             [
@@ -237,7 +237,7 @@
         "type": "function",
         "z": "521df1401aeac40e",
         "name": "Login",
-        "func": "const userLogin = msg.payload.userLogin\nconst userPassword = msg.payload.userPassword\n\nlet find = `SELECT * FROM users WHERE userLogin = '${userLogin}' AND userPassword = '${userPassword}'`\nconsole.log(find)\nmsg.topic = find\n\nreturn msg;",
+        "func": "const userLogin = msg.payload.userLogin\nconst userPassword = msg.payload.userPassword\n\nlet query = `SELECT * FROM users WHERE userLogin = '${userLogin}' AND userPassword = '${userPassword}'`\n\nmsg.topic = query\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -257,7 +257,7 @@
         "z": "521df1401aeac40e",
         "mydb": "2d3e8f48bcc11790",
         "name": "",
-        "x": 500,
+        "x": 520,
         "y": 260,
         "wires": [
             [
@@ -336,7 +336,7 @@
         "z": "521df1401aeac40e",
         "mydb": "2d3e8f48bcc11790",
         "name": "",
-        "x": 500,
+        "x": 520,
         "y": 460,
         "wires": [
             [
@@ -415,7 +415,7 @@
         "z": "521df1401aeac40e",
         "mydb": "2d3e8f48bcc11790",
         "name": "",
-        "x": 500,
+        "x": 520,
         "y": 560,
         "wires": [
             [
@@ -474,7 +474,7 @@
         "type": "function",
         "z": "521df1401aeac40e",
         "name": "Find User",
-        "func": "const userLogin = msg.req.params.userLogin\n\nconsole.log(userLogin)\n\nlet query = `SELECT * FROM users WHERE userLogin = '${userLogin}'`\n\nconsole.log(msg.res.json)\n\nmsg.topic = query\n\nreturn msg;",
+        "func": "const userLogin = msg.req.params.userLogin\n\nconsole.log(userLogin)\n\nlet query = `SELECT * FROM users WHERE userLogin = '${userLogin}'`\n\nmsg.topic = query\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",

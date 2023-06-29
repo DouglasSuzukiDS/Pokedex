@@ -1,11 +1,18 @@
+import { ComponentsTypes } from '../../types/ComponentsType'
 import { Info } from '../Info/Info'
 import './Footer.css'
 
-export const Footer = () => {
+export const Footer = ({ close }: ComponentsTypes) => {
    const handleLogout = () => {
       const logout = confirm('Deseja fazer o logout do sistema?')
 
-      logout ? alert('Saindo ...') : alert('Não')
+      if(logout) {
+         alert('Leaving ... Bye.')
+
+         localStorage.clear()
+
+         close && close()
+      }
    }
 
    return (
@@ -21,7 +28,8 @@ export const Footer = () => {
 
                   <div 
                      className="circleWhiteFooter z-30 flex justify-end bg-white"
-                     onClick={ handleLogout }></div>
+                     onClick={ handleLogout }>
+                  </div>
 
                </div>
 
