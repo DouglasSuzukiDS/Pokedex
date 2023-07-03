@@ -55,6 +55,8 @@ export const Login = ({ close, showCardContainer }: ComponentsTypes) => {
          } else {
             alert(`Email / Password not found in system.`)
          }
+      } else {
+         alert(`Please, fill the fields for make login to use the application. If don't have an account, you make one, just click in Register button.`)
       }
    }
 

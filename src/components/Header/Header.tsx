@@ -11,10 +11,8 @@ export const Header = () => {
 
          <div className="redHeader bg-RedPokeball"></div>
 
-         <div className="blackHeaderArea">
-
-         </div>
-         <div className="blackHeader bg-black flex justify-center items-center">
+         <div className="blackHeaderArea"> </div>
+         <div className="blackHeader bg-black z-10 flex justify-center items-center">
             <div className="circleBlackHeader bg-black flex justify-center items-center">
                <div className="circleWhiteHeader bg-white"></div>
             </div>
@@ -28,10 +26,10 @@ export const Header = () => {
           */}
          </header>
 
-         <div className="restPage w-full border border-purple-950 hidden">
+         {/* <div className="restPage w-full border border-purple-950 hidden">
             <CardContainer />
             <Footer />
-         </div>
+         </div> */}
       </>
    )
 }

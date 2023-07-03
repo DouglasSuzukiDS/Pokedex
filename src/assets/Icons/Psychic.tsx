@@ -1,6 +1,6 @@
-import { IconsProps } from "../../types/IconsType"
+import { IconsType } from "../../types/IconsType"
 
-export const Psychic = ({ w, h, className, fill, onClick }: IconsProps) => {
+export const Psychic = ({ w, h, className, fill, onClick }: IconsType) => {
   return (
     <svg viewBox="0 0 74 78"
       width={w} height={h} className={className} fill={fill} onClick={onClick}>

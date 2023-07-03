@@ -11,6 +11,7 @@ import { serviceExternalAPI } from '../../service/External.service'
 
 import RedPart from '../../assets/SVGs/Red - Part.svg'
 import WhitePart from '../../assets/SVGs/White - Part.svg'
+import { NotFound } from '../NotFound/NotFound'
 
 // https://blog.curso-r.com/posts/2021-11-29-api-pokemon/#:~:text=O%20primeiro%20passo%20para%20acessar%20qualquer%20API%20é%20procurar%20uma%20documentação.&text=Isso%20significa%20que%20devemos%20fazer,(que%20chamamos%20de%20endpoint).
 // https://github.com/PokeAPI/pokeapi/issues/346
@@ -26,6 +27,7 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
    const [pokemonsLocal, setPokemonsLocal] = useState<PokemonType[]>([])
    const [pokemonsFind, setPokemonsFind] = useState<PokemonType[]>([])
    const [showInputSearch, setShowInputSearch] = useState(false)
+   const [notFound, setNotFound] = useState(false)
 
    const searchContainer = document.querySelector('#searchContainer') as HTMLDivElement
    const searchInput = document.querySelector('#searchInput') as HTMLInputElement
@@ -149,6 +151,7 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
    }
 
    const searchAreaRotate = () => {
+      searchContainer.classList.remove('searchContainerRotateinitial')
       searchContainer.classList.add('searchContainerRotate')
       // redPartPokeball.classList.add('searchContainerRotate')
       // whitePartPokeball.classList.add('searchContainerRotate')
@@ -171,10 +174,16 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
          // whitePartPokeball.classList.add('searchContainerRotate')
          // searchContainer.style.animation = 'rotatePokeballInitial 1s'
          
+         searchInput.classList.add('hiddenInputSearch')
+
+         searchContainer.classList.remove('searchContainerRotate')
+         searchContainer.classList.add('searchContainerRotateinitial')
+
+
          setTimeout(() => {
-            searchInput.classList.add('hiddenInputSearch')
-            redPartPokeball.style.rotate = '180deg'
-            whitePartPokeball.style.rotate = '180deg'
+            // searchInput.classList.add('hiddenInputSearch')
+            redPartPokeball.style.rotate = '0deg'
+            whitePartPokeball.style.rotate = '0deg'
             searchContainer.classList.add('flex-col')
             searchContainer.classList.remove('flex-row')
             setShowInputSearch(!showInputSearch)
@@ -220,19 +229,25 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
       // console.log(find)
       setPokemonsFind(pokemonsLocal)
       if (find === '') {
+         setNotFound(false)
          setPokemonsFind(pokemonsLocal)
       } else if (filterByName.length > 0) {
+         setNotFound(false)
          setPokemonsFind(filterByName)
       } else if (filterByID.length > 0) {
+         setNotFound(false)
          setPokemonsFind(filterByID)
-      } else if (filterByType.length > 0) {
-         // setPokemonsFind(filterByType)
+      } else {
+         setNotFound(true)
       }
+      /*else if (filterByType.length > 0) {
+         // setPokemonsFind(filterByType)
+      } */
    }
 
    return (
       <>
-        <div className='searchContainer flex flex-col my-6 border hover:cursor-pointer' id='searchContainer' onMouseEnter={ searchAreaRotate } onClick={ searchAreaInitial }>
+        <div className='searchContainer flex flex-col my-6 border hover:cursor-pointer' id='searchContainer' onMouseEnter={ searchAreaRotate } onMouseLeave={ searchAreaInitial }>
             <img src={ RedPart } alt="Parte de Cima da Pokeball" id='redPartPokeball' />
             
                { showInputSearch &&  
@@ -249,8 +264,8 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
          </div>
 
          <section className="cardContainer font-bold flex flex-row justify-center items-center flex-wrap overflow-y-auto p-2 gap-2">
-            {
-               pokemonsFind.length !== 0 &&
+            {  !notFound ?
+               // pokemonsFind.length !== 0 ?
 
                pokemonsFind.map(p => (
                   <div key={p.id}
@@ -303,7 +318,8 @@ export const CardContainer = ({ className }: ComponentsTypes) => {
                      </div>
 
                   </div>
-               ))
+               )) :
+               <NotFound />
             }
          </section>
       </>

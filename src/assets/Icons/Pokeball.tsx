@@ -1,6 +1,6 @@
-import { IconsProps } from "../../types/IconsType"
+import { IconsType } from "../../types/IconsType"
 
-export const Pokeball = ({ w, h, className, fill, onClick }: IconsProps) => {
+export const Pokeball = ({ w, h, className, fill, onClick }: IconsType) => {
   return (
     <svg viewBox="0 0 201 200"
       width={w} height={h} className={className} fill={fill} onClick={onClick}>

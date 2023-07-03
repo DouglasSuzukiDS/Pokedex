@@ -1,6 +1,6 @@
-import { IconsProps } from "../../types/IconsType"
+import { IconsType } from "../../types/IconsType"
 
-export const Normal = ({ w, h, className, fill, onClick }: IconsProps) => {
+export const Normal = ({ w, h, className, fill, onClick }: IconsType) => {
   return (
     <svg viewBox="0 0 85 85"
       width={w} height={h} className={className} fill={fill} onClick={onClick}>

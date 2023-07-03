@@ -1,6 +1,6 @@
-import { IconsProps } from "../../types/IconsType"
+import { IconsType } from "../../types/IconsType"
 
-export const Poison = ({ w, h, className, fill, onClick }: IconsProps) => {
+export const Poison = ({ w, h, className, fill, onClick }: IconsType) => {
   return (
     <svg viewBox="0 0 83 80"
       width={w} height={h} className={className} fill={fill} onClick={onClick}>

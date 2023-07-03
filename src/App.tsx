@@ -57,8 +57,7 @@ function App() {
   return (
     <>
       <main className='flex flex-col justify-between items-center'>
-        {/* <Header /> */}
-        {/* <CardContainer /> */}
+        <Header />
 
         { registerModal &&
           <Register close={ handleShowLoginModal } />

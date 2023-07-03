@@ -12,6 +12,11 @@
    animation: rotatePokeball 1s;
 }
 
+.searchContainerRotateinitial {
+   animation: rotatePokeballInitial 1s;
+
+}
+
 #redPartPokeball, #whitePartPokeball {
    /* rotate: -90deg; */
    /* border: 1px solid red; */
@@ -32,7 +37,7 @@
    -webkit-text-stroke: 1px var(--BluePokemon);
    /* /border: 1px solid #3E5DB3; */
    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-   animation: showInput 1s forwards;
+   animation: showInput 1s forwards !important;
    /* animation-fill-mode: forwards; */
    /* rotate: 180deg; */
 }
@@ -44,7 +49,7 @@
 }
 
 .hiddenInputSearch {
-   animation: hiddenInput linear 1s;
+   animation: hiddenInput linear 1s !important;
 }
 
 .cardContainer {
@@ -174,17 +179,17 @@
     80% { rotate: -10deg; }
     90% { rotate:  -5deg; }
    100% { rotate:   0deg; } */
-   0% { rotate:   0deg; }
-   10% { rotate:  5deg; }
-   20% { rotate: 10deg; }
-   30% { rotate: 20deg; }
-   40% { rotate: 30deg; }
+   0%  { rotate: 90deg; }
+   10% { rotate: 80deg; }
+   20% { rotate: 70deg; }
+   30% { rotate: 60deg; }
+   40% { rotate: 50deg; }
    50% { rotate: 40deg; }
-   60% { rotate: 50deg; }
-   70% { rotate: 60deg; }
-   80% { rotate: 70deg; }
-   90% { rotate: 80deg; }
-  100% { rotate: 90deg; }
+   60% { rotate: 30deg; }
+   70% { rotate: 20deg; }
+   80% { rotate: 10deg; }
+   90% { rotate:  5deg; }
+  100% { rotate:  0deg; }
 }
 
 @keyframes showInput {
